@@ -1,0 +1,33 @@
+name: Build AAR and Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # 例如 v1.0.0 会触发构建和发布
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 11
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build AAR
+        run: ./gradlew :xpmodulemultidex:assembleRelease
+
+      - name: Upload AAR to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: xpmodulemultidex/build/outputs/aar/xpmodulemultidex-release.aar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
