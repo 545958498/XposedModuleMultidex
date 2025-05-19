@@ -25,8 +25,8 @@ jobs:
         run: ./gradlew :xpmodulemultidex:assembleRelease --console=plain
 
       - name: Upload AAR Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: xpmodulemultidex-release-aar
-          path: xpmodulemultidex/build/outputs/aar/*.aar
-
+      uses: actions/upload-artifact@v3
+      with:
+      name: xpmodulemultidex-release-aar
+      path: |
+        ${{ github.workspace }}/xpmodulemultidex/build/outputs/aar/*.aar
