@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-
+    implementation(name: 'gradle-bintray-plugin-1.8.0', ext: 'jar')
 }
 
 version = "1.0.0"
