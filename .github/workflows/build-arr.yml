@@ -28,7 +28,6 @@ jobs:
       - name: Upload AAR Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: xpmodulemultidex-release-aar
-          path: |
-            ${{ github.workspace }}/xpmodulemultidex/build/outputs/aar/*.aar
+          name: XposedModuleMultidex
+          path: XposedModuleMultidex/build/outputs/aar/*.aar
 
